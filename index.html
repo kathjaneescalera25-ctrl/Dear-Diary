@@ -1,92 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dear Diary</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">A personal space</p>
-          <h1>Dear Diary</h1>
-        </div>
-        <button id="new-entry-btn" class="secondary-btn">New Entry</button>
-      </header>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-      <main class="layout">
-        <aside class="panel writer-panel">
-          <h2>Write today</h2>
-
-          <form id="entry-form">
-            <input type="hidden" id="entry-id" />
-
-            <label for="entry-title">Title</label>
-            <input id="entry-title" type="text" maxlength="80" placeholder="Morning reflection" required />
-
-            <div class="two-col">
-              <div>
-                <label for="entry-date">Date</label>
-                <input id="entry-date" type="date" required />
-              </div>
-              <div>
-                <label for="entry-mood">Mood</label>
-                <select id="entry-mood">
-                  <option value="Happy">Happy</option>
-                  <option value="Calm">Calm</option>
-                  <option value="Reflective">Reflective</option>
-                  <option value="Excited">Excited</option>
-                  <option value="Sad">Sad</option>
-                  <option value="Tired">Tired</option>
-                </select>
-              </div>
-            </div>
-
-            <label for="entry-content">Entry</label>
-            <textarea id="entry-content" rows="12" placeholder="What happened today?" required></textarea>
-
-            <div class="actions">
-              <button type="submit" class="primary-btn">Save Entry</button>
-              <button type="button" id="cancel-edit" class="ghost-btn hidden">Cancel</button>
-            </div>
-          </form>
-        </aside>
-
-        <section class="panel entries-panel">
-          <div class="toolbar">
-            <div>
-              <h2>Your memories</h2>
-            </div>
-            <div class="search-wrap">
-              <input id="search-input" type="search" placeholder="Search entries..." />
-            </div>
-          </div>
-
-          <div class="summary-row">
-            <div class="stat-box">
-              <span class="stat-label">Total</span>
-              <strong id="total-count">0</strong>
-            </div>
-            <div class="stat-box">
-              <span class="stat-label">This month</span>
-              <strong id="month-count">0</strong>
-            </div>
-            <div class="stat-box">
-              <span class="stat-label">Latest mood</span>
-              <strong id="latest-mood">-</strong>
-            </div>
-          </div>
-
-          <div id="entries-list" class="entries-list"></div>
-        </section>
-      </main>
+    <div class="container" id="home">
+        <h1>Dear Diary ♡</h1>
+        <p>Welcome to my little corner of memories.</p>
+        <button onclick="openDiary()">Open My Diary</button>
+        <button onclick="showEntries()">My Entries</button>
     </div>
 
-    <script src="app.js"></script>
-  </body>
+    <div class="container" id="diary" style="display: none;">
+        <h1>My Diary ♡</h1>
+        <p>A little space for my thoughts and memories.</p>
+
+        <label>Your Name</label>
+        <input type="text" id="ownerName" placeholder="Enter your name...">
+
+        <label>Date</label>
+        <input type="date" id="entryDate">
+
+        <label>Entry Title</label>
+        <input type="text" id="entryTitle" placeholder="Give your story a title...">
+
+        <label>Dear Diary,</label>
+        <textarea id="diaryEntry" placeholder="Write your thoughts here..."></textarea>
+
+        <label>How are you feeling today?</label>
+<select id="entryMood">
+    <option value="">Choose your mood...</option>
+    <option value="😊 Happy">😊 Happy</option>
+    <option value="🥰 Loved">🥰 Loved</option>
+    <option value="😢 Sad">😢 Sad</option>
+    <option value="😡 Angry">😡 Angry</option>
+    <option value="😴 Tired">😴 Tired</option>
+    <option value="😌 Peaceful">😌 Peaceful</option>
+    <option value="🥺 Anxious">🥺 Anxious</option>
+</select>
+
+    <label>Add a Memory ♡</label>
+    <input type="file" id="entryImage" accept="image/*">
+
+    <label>
+    <input type="checkbox" id="entryFavorite">
+    Add to my Favorites ♡
+</label>
+
+        <button onclick="saveEntry()">Save My Entry ♡</button>
+        <button onclick="goHome()">Back</button>
+
+        <div id="entries"></div>
+    </div>
+
+<div class="container" id="savedEntriesPage" style="display: none;">
+    <h1>My Entries ♡</h1>
+    <p>All my little memories in one place.</p>
+
+    <div id="savedEntriesList"></div>
+
+    <h2>My Diary Calendar ♡</h2>
+<input type="month" id="diaryCalendar">
+<div id="calendarEntries"></div>
+
+<h2>My Diary Statistics ♡</h2>
+
+<div class="statistics">
+    <p>Total Entries: <span id="totalEntries">0</span></p>
+    <p>Total Words: <span id="totalWords">0</span></p>
+</div>
+
+    <button onclick="goHome()">Back to Home</button>
+</div>
+
+    <script src="script.js"></script>
+</body>
 </html>
