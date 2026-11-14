@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dear Diary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">A personal space</p>
+          <h1>Dear Diary</h1>
+        </div>
+        <button id="new-entry-btn" class="secondary-btn">New Entry</button>
+      </header>
+
+      <main class="layout">
+        <aside class="panel writer-panel">
+          <h2>Write today</h2>
+
+          <form id="entry-form">
+            <input type="hidden" id="entry-id" />
+
+            <label for="entry-title">Title</label>
+            <input id="entry-title" type="text" maxlength="80" placeholder="Morning reflection" required />
+
+            <div class="two-col">
+              <div>
+                <label for="entry-date">Date</label>
+                <input id="entry-date" type="date" required />
+              </div>
+              <div>
+                <label for="entry-mood">Mood</label>
+                <select id="entry-mood">
+                  <option value="Happy">Happy</option>
+                  <option value="Calm">Calm</option>
+                  <option value="Reflective">Reflective</option>
+                  <option value="Excited">Excited</option>
+                  <option value="Sad">Sad</option>
+                  <option value="Tired">Tired</option>
+                </select>
+              </div>
+            </div>
+
+            <label for="entry-content">Entry</label>
+            <textarea id="entry-content" rows="12" placeholder="What happened today?" required></textarea>
+
+            <div class="actions">
+              <button type="submit" class="primary-btn">Save Entry</button>
+              <button type="button" id="cancel-edit" class="ghost-btn hidden">Cancel</button>
+            </div>
+          </form>
+        </aside>
+
+        <section class="panel entries-panel">
+          <div class="toolbar">
+            <div>
+              <h2>Your memories</h2>
+            </div>
+            <div class="search-wrap">
+              <input id="search-input" type="search" placeholder="Search entries..." />
+            </div>
+          </div>
+
+          <div class="summary-row">
+            <div class="stat-box">
+              <span class="stat-label">Total</span>
+              <strong id="total-count">0</strong>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">This month</span>
+              <strong id="month-count">0</strong>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Latest mood</span>
+              <strong id="latest-mood">-</strong>
+            </div>
+          </div>
+
+          <div id="entries-list" class="entries-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
